@@ -43,7 +43,11 @@
       },
       "actions": {
         "GetWeatherForecast": {
-          "runAfter": {},
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
           "metadata": {
             "operationMetadataId": "441544b2-7559-4b9c-8926-b0395a012e43"
           },
@@ -59,6 +63,22 @@
               "type": "Raw",
               "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
             }
+          }
+        },
+        "Initialize_variable": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "3d946afc-409c-429f-8027-52a9c8cf05aa"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Test",
+                "type": "integer",
+                "value": 1
+              }
+            ]
           }
         }
       }
